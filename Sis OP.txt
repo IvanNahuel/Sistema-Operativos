@@ -1,0 +1,121 @@
+			permisos
+
+			RWX R-- R--
+			721 4-- 4--
+
+			744
+	touch (crea un archivo, si existe lo cambia de nombre y fecha)
+	touch archivo.1.txt
+	ls -l archivo.txt		//ve los permisos de los archivos
+
+	
+	mkdir dir01		(creo un directorio)
+	
+	ls -ld dir01
+
+	rwx r-x r-x
+	421 421	421
+	 7   5   5
+
+		aginar todos los permisos
+	chmod (cambiar los permisos)ch
+	chmod 770 archivo01.txt	
+
+	chmod 774 dir01
+	ls -ld dir01   //<---- observaras los cambios del directorio
+
+	chmod -R 774 dir01 (de forma recursiva, todos los archvios dentro del directorio alojados en el se modificara de forma global)
+
+	chown marcos archivo01.txt (cambia de dueño del archivo)
+	//tambien se puede agregar el grupo  con " :nogroup "
+	
+	chgrp nogroup archivo01.txt (mantiene el dueño pero cambia de grupo)
+
+	ls -ld /tmp (ve el contenido de la carpeta sin meterse dentro)
+
+---------------------------------------------------------------			
+		
+				USUARIOS
+MORE /ETC/PASSWD (INFORMACION DEL USUARIO)
+
+more /tect/group (informacion de grupos)
+
+grep 'marcos' /etc/group (grupos a los cuales pertenesco)
+
+
+tipos de shells que existen ( cat /etc/shells )
+
+useradd -m -c "usuario prueba" -s /bin/bash prueba
+               comentario          indicar el tipo de shell	"prueba"<--el nombre del usuario
+
+passwd prueba	(cambia de contraseña, segundo parametro el usuario)
+
+grep prueba /etc/shadow (ver contraseñas del usuario)
+
+login (logea a un usuario determinado)
+
+//ingreso de contraseña y estas dentro
+
+usermod -G sudo -a prueba    (doy permisos de ingreso desde prueba a sudo)
+
+------------------------------------------------------------------------------
+INTERPRETE DE COMANDOS: interpretadores de comandos como shell scrip,tiene su forma de trabajar
+en un mismo script puede estar divido en dos partes ya sea bash o sh, 
+
+
+
+como crear un bash-----
+
+1) ingresar al root
+	sudo su -
+	
+2)crear un directorio donde contendra el bash
+	
+	mkdir shells
+3)pararse en el
+	cd shells/
+4)una vez dentro del directorio creamos el archivo bash
+	nano prog01.sh
+5)nos ingresara al editor de shells e ingresamos lo siguiente
+	#!/bin/bash
+
+	echo "hola mundo"
+6)veremos que no tiene permiso de ejecucion entonces lo cambiaremos
+
+	ls -l prog01.sh
+	(no tendra permiso de ejecucion)
+
+	chmod +x prog01.sh
+
+(listo ya tendremos el permiso de ejecucion dentro del archivo bash)
+(para ejecutarlo ingresaremos lo siguiente)
+
+./prog01.sh
+
+(y se ejecutara el bash)
+
+
+
+
+-----------variables de entorno------
+
+
+
+
+
+#!/bin/bash
+
+echo "introduzca su nombre"
+
+read NOMBRE
+
+echo "su nombre es : ${NOMBRE}"
+
+
+
+//INGRESA SU NOMBRE Y LO GUARDA EN LA VARIABLE "NOMBRE " DESPUES MUESTRA ESA VARIABLE POR PANTALLA
+
+
+
+
+
