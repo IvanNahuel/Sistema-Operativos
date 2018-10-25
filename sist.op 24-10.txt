@@ -1,0 +1,51 @@
+		sistemas operativos
+
+dmesg | grep sd | more  //comandos que ve todos los
+discos, verifica si reconoce todos los puertos, externos
+ya sea particiones de discos.
+
+
+creamos una particion con
+
+1) fdisk /dev/sdb
+*despues ponemos "p" en primera instancia, la letra p
+verifica nuestros discos virtuales
+
+*luego "n" para añadir un nuevo disco
+*luego enter hasta llegar a la parte de elegir memoria
+o sector y ponemos "+50mb" es decir 50megabytes o mas
+
+
+crear un vg 
+1) vgcreate vg01 /dev/sdb1
+    	nombre     partcicion a asgianar
+2)vgcreate vg02 /dev/sddc1
+
+pvs (muestra informacion)
+
+podemos asignar discos a los vg
+
+vgs (nos muestra informacion)
+
+vgextend vg01 dev/sdb	
+
+
+--------------------------------------
+reparticionado:
+
+//lvcreate : atravez de el vg, particionarlo
+
+lvcreate -L +20MB -n lv02 vg01
+
+
+
+
+
+mkfs.ext4 /dev/vg01/lv01	
+
+mkdir /disco1	//creo un directorio		
+
+df -h 	
+
+
+
